@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Valentines My Love</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Dancing Script', cursive;
+    background: linear-gradient(to bottom, #ffbdda, #f877b7);
+    overflow-x: hidden;
+}
+
+
+
+
+
+/* Landing Page */
+#landing {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+h1 {
+    font-size: 40px;
+    color: rgb(26, 1, 1);
+    text-shadow: 2px 2px 8px #ff69b4;
+}
+
+button {
+    padding: 12px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 25px;
+    background-color: rgb(252, 195, 229);
+    color: #d53c8e;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #f9b2f1;
+}
+
+/* Gallery Section */
+#gallery {
+    display: none;
+    padding: 30px;
+    min-height: 100vh;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.photo-container img {
+    width: 50%;
+    padding: 15px 15px 40px 15px; /* extra bottom for polaroid feel */
+    background: rgb(249, 246, 246); 
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    transition: 0.4s ease;
+}
+
+
+.photo-container img:hover {
+    transform: rotate(-2deg) scale(1.05);
+}
+.photo-container {
+    position: relative;
+    text-align: center;
+}
+
+/* Tiny heart decoration */
+.photo-container::after {
+    position: absolute;
+    top: -12px;
+    right: -8px;
+    font-size: 18px;
+}
+
+.photo-container:nth-child(1)::after { content: "💗"; }
+.photo-container:nth-child(2)::after { content: "✨"; }
+.photo-container:nth-child(3)::after { content: "🌸"; }
+.photo-container:nth-child(4)::after { content: "🎀"; }
+
+
+
+
+.quote {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,192,203,0.9);
+    color: #c71585;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    border-radius: 15px;
+    opacity: 0;
+    transition: 0.4s;
+    font-size: 18px;
+}
+.date {
+    margin-top: 8px;
+    font-size: 16px;
+    color: #c71585;
+}
+
+.photo-container.active .quote {
+    opacity: 1;
+}
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+#letter {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 999;
+}
+
+.paper {
+    background: #f5e6c8;
+    background-image: url("https://www.transparenttextures.com/patterns/paper.png");
+    width: 100%;
+    max-width: 380px;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgba(255, 200, 120, 0.7);
+    font-family: serif;
+    color: #5a3e2b;
+    animation: fadeIn 0.6s ease;
+}
+
+
+.petal {
+    position: fixed;
+    top: -10px;
+    font-size: 18px;
+    animation: fall linear forwards;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Landing Page -->
+<div id="landing">
+    <h1>Happy Valentines Day My Love 💖</h1>
+    <button onclick="startCelebration()">Start Celebration</button>
+</div>
+
+<!-- Gallery Page -->
+<div id="gallery">
+    <div class="gallery-grid">
+        <div style="text-align:center; margin-top:40px;">
+    <button onclick="openLetter()">Open My Letter 💌</button>
+</div>
+
+
+        <!-- PHOTO 1 -->
+        <div class="photo-container" onclick="toggleQuote(this)">
+            <img src="photo1.jpeg">
+            <div class="date">26 Jun 2024</div>
+            <div class="quote">Every time you kiss me, my heart forgets how to behave. It’s not just a kiss — it’s warmth, closeness, and a silent promise between us. The way you lean in, the softness, the way time pauses for just a second… it makes me fall for you all over again. Your kisses aren’t just moments; they’re memories I carry with me long after.💋</div>
+        </div>
+
+        <!-- PHOTO 2 -->
+        <div class="photo-container" onclick="toggleQuote(this)">
+            <img src="photoo2.jpeg">
+            <div class="date">09 July 2024</div>
+            <div class="quote">Thank you for loving me the way you do. Thank you for your patience, your care, your understanding, and the little things you do without even realizing. You make me feel valued, seen, and deeply cherished. Loving you is easy, but being loved by you is the greatest gift I could ever ask for.✨</div>
+        </div>
+
+        <!-- PHOTO 3 -->
+        <div class="photo-container" onclick="toggleQuote(this)">
+            <img src="photo3.jpeg">
+            <div class="date">29 Nov 2025</div>
+            <div class="quote">What we have is something I never want to take for granted. Our love feels natural, effortless, and beautifully real. Through every laugh, every small argument, every quiet moment, we grow stronger together. I don’t just love you for who you are — I love us for who we are when we’re together. And I hope our story continues for a lifetime. ♾️</div>
+        </div>
+
+        <!-- PHOTO 4 -->
+        <div class="photo-container" onclick="toggleQuote(this)">
+            <img src="photo4.jpeg">
+            <div class="date">15 Oct 2024</div>
+            <div class="quote">
+
+Your hugs are my safest place in this entire world. The moment you wrap your arms around me, everything feels calm and steady. It’s like all my worries fade away, and I’m exactly where I’m meant to be. In your embrace, I feel protected, loved, and understood without saying a single word. If I could choose one place to stay forever, it would be right there — in your arms.💕</div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+function startCelebration() {
+    document.getElementById("landing").style.display = "none";
+    document.getElementById("gallery").style.display = "block";
+}
+
+function toggleQuote(element) {
+    element.classList.toggle("active");
+}
+function openLetter() {
+    document.getElementById("letter").style.display = "flex";
+
+    // Create falling petals
+    for (let i = 0; i < 20; i++) {
+        let petal = document.createElement("div");
+        petal.className = "petal";
+        petal.innerHTML = "🌸";
+        petal.style.left = Math.random() * 100 + "vw";
+        petal.style.animationDuration = (3 + Math.random() * 3) + "s";
+        document.body.appendChild(petal);
+
+        setTimeout(() => {
+            petal.remove();
+        }, 6000);
+    }
+}
+function closeLetter() {
+    document.getElementById("letter").style.display = "none";
+}
+
+
+</script>
+<!-- Letter Section -->
+<div id="letter">
+    <div class="paper">
+         <div style="text-align:right;">
+            <span onclick="closeLetter()" style="cursor:pointer; font-size:20px;">✖</span>
+        </div>
+        <h2>My Love,</h2>
+        <p>
+            Write your full heartfelt letter here. This is where you tell him everything —
+            how much he means to you, how grateful you are, how you want forever with him.
+            Make it personal. Make it yours.
+        </p>
+        <p>
+            Yours always,
+            <br>❤️
+        </p>
+    </div>
+</div>
+
+</body>
+</html>
